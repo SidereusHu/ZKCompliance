@@ -1,52 +1,74 @@
-# ZK-Compliance: 零知识证明合规系统
+# ZK-Compliance: Zero-Knowledge Proof Compliance System
 
-基于零知识证明技术构建的隐私保护合规系统，在满足监管要求的同时保护用户隐私。
+A privacy-preserving compliance system built on zero-knowledge proof technology, meeting regulatory requirements while protecting user privacy.
 
-## 项目概述
+## Overview
 
-传统合规流程需要用户披露大量敏感信息，ZK-Compliance 通过零知识证明技术，让用户能够**证明合规性而不泄露底层数据**。
+Traditional compliance processes require users to disclose extensive sensitive information. ZK-Compliance leverages zero-knowledge proofs to enable users to **prove compliance without revealing underlying data**.
 
-## 核心功能
+## Core Features
 
-- **ZK-KYC**: 证明年龄、国籍等属性而不暴露身份证件
-- **ZK-AML**: 证明资金来源合规而不披露交易历史
-- **ZK-Solvency**: 交易所储备金证明而不泄露用户余额
-- **ZK-Credit**: 隐私保护的链上信用评分
+- **ZK-KYC**: Prove age, nationality, and other attributes without exposing identity documents
+- **ZK-AML**: Prove fund source compliance without disclosing transaction history
+- **ZK-Solvency**: Exchange reserve proofs without revealing individual user balances
+- **ZK-Credit**: Privacy-preserving on-chain credit scoring
 
-## 项目结构
+## Project Structure
 
 ```
 ZKCompliance/
 ├── src/
-│   ├── zkp/                 # Phase 1: ZK基础库
-│   │   ├── primitives.py    # 密码学原语
-│   │   ├── commitment.py    # 承诺方案
-│   │   ├── circuit.py       # 电路抽象
-│   │   ├── prover.py        # 证明生成
-│   │   └── verifier.py      # 证明验证
+│   ├── zkp/                 # Phase 1: ZK Primitives
+│   │   ├── primitives.py    # Cryptographic primitives (finite fields, elliptic curves)
+│   │   ├── commitment.py    # Commitment schemes (Pedersen, Merkle)
+│   │   ├── circuit.py       # Circuit abstraction (R1CS)
+│   │   ├── prover.py        # Proof generation (Groth16)
+│   │   └── verifier.py      # Proof verification
 │   ├── kyc/                 # Phase 2: ZK-KYC
+│   │   ├── credential.py    # Verifiable credentials
+│   │   ├── age_proof.py     # Age verification proofs
+│   │   ├── membership_proof.py  # Set membership proofs
+│   │   ├── issuer.py        # Credential issuance
+│   │   └── verifier.py      # KYC verification
 │   ├── aml/                 # Phase 3: ZK-AML
-│   ├── solvency/            # Phase 4: ZK-Solvency
-│   └── credit/              # Phase 5: ZK-Credit
-├── docs/                    # 技术博客
+│   │   ├── sanctions.py     # Sanctions screening (OFAC/EU/UN)
+│   │   ├── source_proof.py  # Transaction source proofs
+│   │   ├── privacy_pools.py # Privacy Pools association sets
+│   │   └── verifier.py      # AML policy verification
+│   ├── solvency/            # Phase 4: ZK-Solvency (planned)
+│   └── credit/              # Phase 5: ZK-Credit (planned)
+├── docs/                    # Technical blog posts
 └── README.md
 ```
 
-## 技术栈
+## Technical Stack
 
-- **密码学**: 有限域运算、椭圆曲线、Pedersen承诺
-- **证明系统**: Groth16、PLONK概念实现
-- **电路**: R1CS约束系统
-- **语言**: Python (教学演示)
+- **Cryptography**: Finite field arithmetic, elliptic curves (BN128, BLS12-381), Pedersen commitments
+- **Proof Systems**: Groth16, PLONK conceptual implementation
+- **Circuits**: R1CS constraint system
+- **Language**: Python (educational demonstration)
 
-## 开发进度
+## Development Progress
 
-- [ ] Phase 1: ZK基础库
-- [ ] Phase 2: ZK-KYC
-- [ ] Phase 3: ZK-AML
-- [ ] Phase 4: ZK-Solvency
-- [ ] Phase 5: ZK-Credit
+- [x] Phase 1: ZK Primitives - Cryptographic foundations
+- [x] Phase 2: ZK-KYC - Zero-knowledge identity verification
+- [x] Phase 3: ZK-AML - Anti-money laundering with privacy
+- [ ] Phase 4: ZK-Solvency - Proof of reserves
+- [ ] Phase 5: ZK-Credit - Privacy-preserving credit scores
 
-## 许可证
+## Quick Start
+
+```bash
+# Run Phase 1 exploration
+python -m src.explore_zkp
+
+# Run Phase 2 KYC demo
+python -m src.explore_kyc
+
+# Run Phase 3 AML demo
+python -m src.explore_aml
+```
+
+## License
 
 MIT License
