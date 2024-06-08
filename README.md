@@ -35,8 +35,15 @@ ZKCompliance/
 │   │   ├── source_proof.py  # Transaction source proofs
 │   │   ├── privacy_pools.py # Privacy Pools association sets
 │   │   └── verifier.py      # AML policy verification
-│   ├── solvency/            # Phase 4: ZK-Solvency (planned)
-│   └── credit/              # Phase 5: ZK-Credit (planned)
+│   ├── solvency/            # Phase 4: ZK-Solvency
+│   │   ├── merkle_sum_tree.py    # Merkle Sum Tree for liabilities
+│   │   ├── asset_commitment.py   # Asset commitment schemes
+│   │   ├── proof_of_reserves.py  # Proof of reserves protocol
+│   │   └── individual_verification.py  # User verification
+│   └── credit/              # Phase 5: ZK-Credit
+│       ├── score.py         # Credit score computation
+│       ├── proof.py         # Credit proof generation
+│       └── verifier.py      # Credit verification & policies
 ├── docs/                    # Technical blog posts
 └── README.md
 ```
@@ -53,8 +60,8 @@ ZKCompliance/
 - [x] Phase 1: ZK Primitives - Cryptographic foundations
 - [x] Phase 2: ZK-KYC - Zero-knowledge identity verification
 - [x] Phase 3: ZK-AML - Anti-money laundering with privacy
-- [ ] Phase 4: ZK-Solvency - Proof of reserves
-- [ ] Phase 5: ZK-Credit - Privacy-preserving credit scores
+- [x] Phase 4: ZK-Solvency - Proof of reserves
+- [x] Phase 5: ZK-Credit - Privacy-preserving credit scores
 
 ## Quick Start
 
@@ -67,6 +74,12 @@ python -m src.explore_kyc
 
 # Run Phase 3 AML demo
 python -m src.explore_aml
+
+# Run Phase 4 Solvency demo
+python -m src.explore_solvency
+
+# Run Phase 5 Credit demo
+python -m src.explore_credit
 ```
 
 ## License
